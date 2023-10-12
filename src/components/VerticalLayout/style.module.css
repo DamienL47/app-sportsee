@@ -1,0 +1,31 @@
+.container {
+    width: 117px;
+    height: 100vh;
+    background-color: #000;
+    z-index: -1;
+}
+
+.icones {
+    padding-top: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.icone {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    width: 40px;
+    margin-bottom: 20px;
+}
+
+.copyright {
+    width: 200px;
+    color: #fff;
+    font-size: 12px;
+    transform: rotate(-90deg);
+    margin-left: -45px;
+    margin-top: 150px;
+    
+}
