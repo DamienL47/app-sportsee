@@ -4,6 +4,7 @@ import { LayoutMenu } from "../../components/LayoutMenu/LayoutMenu.jsx";
 import { VerticalLayout } from "../../components/VerticalLayout/VerticalLayout.jsx";
 import { useEffect, useState } from "react";
 import { UserLineChart } from "../../components/UserLineChart/UserLineChart";
+import { UserBarChart } from "../../components/UserBarChart/UserBarChart";
 
 export function Dashboard({ user }) {
   const [userName, setUserName] = useState("");
@@ -33,7 +34,9 @@ export function Dashboard({ user }) {
           Félicitation ! Vous avez explosé vos objectifs hier 👏
         </p>
         <div className={s.containerCharts}>
-          <div className={s.barChart}></div>
+          <div className={s.barChart}>
+            <UserBarChart user={user} />
+          </div>
           <div className={s.treeCharts}>
             <UserLineChart user={user} />
             <div className={s.radarChart}></div>
