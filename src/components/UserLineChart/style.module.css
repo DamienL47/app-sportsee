@@ -1,0 +1,28 @@
+.linechart {
+    width: 300px;
+    height: 300px;
+    background-color: #FF0000;
+    border-radius: 10px;
+    margin-left: 120px;
+}
+
+
+.subtitle {
+    width: 60%;
+    padding-top: 30px;
+    padding-left: 30px;
+    color: white;
+    opacity: 0.6;
+}
+.customTooltip {
+    background-color: #fff;
+}
+.labelTooltip {
+    padding: 10px;
+}
+.customXAxis {
+    opacity: 0.6;
+}
+
+    
+

@@ -2,14 +2,14 @@ import s from "./style.module.css";
 import { DataAPI } from "../../api/data.js";
 import { LayoutMenu } from "../../components/LayoutMenu/LayoutMenu.jsx";
 import { VerticalLayout } from "../../components/VerticalLayout/VerticalLayout.jsx";
-import { USER12_URL, USER18_URL } from "../../config.js";
 import { useEffect, useState } from "react";
+import { UserLineChart } from "../../components/UserLineChart/UserLineChart";
 
 export function Dashboard({ user }) {
   const [userName, setUserName] = useState("");
 
   useEffect(() => {
-    async function fetchData() {
+    async function getName() {
       try {
         const userFirstName = await DataAPI.getUsers(user);
         setUserName(userFirstName.data.userInfos.firstName);
@@ -18,8 +18,8 @@ export function Dashboard({ user }) {
       }
     }
 
-    fetchData();
-  }, []);
+    getName();
+  }, [user]);
 
   return (
     <>
@@ -32,6 +32,15 @@ export function Dashboard({ user }) {
         <p className={s.text}>
           Félicitation ! Vous avez explosé vos objectifs hier 👏
         </p>
+        <div className={s.containerCharts}>
+          <div className={s.barChart}></div>
+          <div className={s.treeCharts}>
+            <UserLineChart user={user} />
+            <div className={s.radarChart}></div>
+            <div className={s.circularChart}></div>
+          </div>
+        </div>
+        <div className={s.energyCount}></div>
       </section>
     </>
   );
