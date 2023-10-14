@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { UserLineChart } from "../../components/UserLineChart/UserLineChart";
 import { UserBarChart } from "../../components/UserBarChart/UserBarChart";
 import { UserRadarChart } from "../../components/UserRadarChart/UserRadarChart";
+import { UserPieChart } from "../../components/UserPieChart/UserPieChart";
 
 export function Dashboard({ user }) {
   const [userName, setUserName] = useState("");
@@ -43,7 +44,9 @@ export function Dashboard({ user }) {
             <div className={s.radarChart}>
               <UserRadarChart user={user} />
             </div>
-            <div className={s.circularChart}></div>
+            <div className={s.circularChart}>
+              <UserPieChart user={user} />
+            </div>
           </div>
         </div>
         <div className={s.energyCount}></div>
