@@ -23,4 +23,7 @@
     margin-top : 60px;
 }
 
-
+.treeCharts {
+    display: flex;
+    gap: 50px;
+}

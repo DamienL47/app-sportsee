@@ -5,6 +5,7 @@ import { VerticalLayout } from "../../components/VerticalLayout/VerticalLayout.j
 import { useEffect, useState } from "react";
 import { UserLineChart } from "../../components/UserLineChart/UserLineChart";
 import { UserBarChart } from "../../components/UserBarChart/UserBarChart";
+import { UserRadarChart } from "../../components/UserRadarChart/UserRadarChart";
 
 export function Dashboard({ user }) {
   const [userName, setUserName] = useState("");
@@ -39,7 +40,9 @@ export function Dashboard({ user }) {
           </div>
           <div className={s.treeCharts}>
             <UserLineChart user={user} />
-            <div className={s.radarChart}></div>
+            <div className={s.radarChart}>
+              <UserRadarChart user={user} />
+            </div>
             <div className={s.circularChart}></div>
           </div>
         </div>

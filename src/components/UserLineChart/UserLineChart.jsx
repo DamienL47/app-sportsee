@@ -1,6 +1,6 @@
 import s from "./style.module.css";
 import { DataAPI } from "../../api/data.js";
-import { LineChart, Line, Tooltip, XAxis, Brush } from "recharts";
+import { LineChart, Line, Tooltip, XAxis } from "recharts";
 import { useEffect, useState } from "react";
 import { USER_AVERAGE } from "../../config";
 

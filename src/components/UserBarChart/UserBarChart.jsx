@@ -18,7 +18,6 @@ export function UserBarChart({ user }) {
     async function getActivity() {
       try {
         const userActivity = await DataAPI.getDataInfos(user, USER_ACTIVITY);
-        console.log(userActivity);
         setActivity(userActivity.data.sessions);
       } catch (error) {
         console.log(error);
