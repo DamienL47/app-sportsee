@@ -2,7 +2,7 @@ import axios from "axios";
 import { BASE_URL } from "../config";
 
 export class DataAPI {
-  static async getUsers(id, stats = null) {
+  static async getUsers(id) {
     try {
       const response = await axios.get(`${BASE_URL}${id}`);
       return response.data;
