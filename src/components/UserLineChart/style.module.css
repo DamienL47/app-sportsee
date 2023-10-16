@@ -1,9 +1,19 @@
 .linechart {
+    position: relative;
     width: 258px;
     height: 258px;
     background-color: #FF0000;
     border-radius: 10px;
     margin-left: 120px;
+    overflow: hidden;
+}
+.overlay {
+    position: absolute;
+    height: 100%;
+    background-color: #000000;
+    opacity: 0.5;
+    border-radius: 10px;
+    pointer-events: "none";
 }
 
 .subtitle {

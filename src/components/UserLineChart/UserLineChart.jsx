@@ -1,6 +1,13 @@
 import s from "./style.module.css";
 import { DataAPI } from "../../api/data.js";
-import { LineChart, Line, Tooltip, XAxis, ResponsiveContainer } from "recharts";
+import {
+  LineChart,
+  Line,
+  Tooltip,
+  XAxis,
+  ReferenceDot,
+  ResponsiveContainer,
+} from "recharts";
 import { useEffect, useState } from "react";
 import { USER_AVERAGE } from "../../config";
 
@@ -54,9 +61,27 @@ export function UserLineChart({ user }) {
     );
   };
 
+  const [hoveredData, setHoveredData] = useState(null);
+  const handleMouseMove = (event) => {
+    const x = event.nativeEvent.offsetX;
+    const y = event.nativeEvent.offsetY;
+    const containerHeight = event.currentTarget.clientHeight;
+
+    setHoveredData({ x, y, overlayHeight: containerHeight - y });
+  };
+
+  console.log(hoveredData);
   return (
     <>
-      <div className={s.linechart}>
+      <div className={s.linechart} onMouseDown={handleMouseMove}>
+        <div
+          className={s.overlay}
+          style={{
+            background: hoveredData ? "rgba(0, 0, 0, 0.5)" : "transparent",
+            width: hoveredData ? `calc(100% - ${hoveredData.x}px)` : "100%",
+            left: hoveredData ? `${hoveredData.x}px` : 0,
+          }}
+        />
         <h3 className={s.subtitle}>Durée moyenne des sessions</h3>
         <ResponsiveContainer width="100%" height="50%">
           <LineChart
@@ -84,13 +109,14 @@ export function UserLineChart({ user }) {
               </linearGradient>
             </defs>
             <Line
-              type="monotone"
+              type="natural"
               dataKey="sessionLength"
               stroke="url(#lineGradient)"
               strokeWidth={3}
               dot={false}
+              isAnimationActive={false}
             />
-
+            <ReferenceDot />
             <XAxis
               dataKey="day"
               axisLine={false}
@@ -98,7 +124,7 @@ export function UserLineChart({ user }) {
               padding={{ left: 10, right: 10 }}
               tick={<CustomXAxisTick />}
             />
-            <Tooltip content={<CustomTooltip />} />
+            <Tooltip content={<CustomTooltip />} cursor={false} />
           </LineChart>
         </ResponsiveContainer>
       </div>
