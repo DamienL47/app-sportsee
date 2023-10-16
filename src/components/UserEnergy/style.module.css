@@ -1,0 +1,80 @@
+.container {
+    margin-top: 0;
+}
+
+.blocContainer {
+    display: flex;
+    width: 180px;
+    margin-top: 75px;
+    align-items: center;
+    background-color: #fcfcfc;
+    border-radius: 20px;
+    padding: 5px 20px 20px 20px;
+}
+
+.containerEnergy {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+}
+
+.paraf {
+    font-size: 1.2em;
+    font-family: "Roboto-Bold";
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: #74798C;
+}
+
+.iconeKcal {
+    margin-top: 20px;
+    background-color: #ff000055;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.iconeProt {
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #49b9ff4c;
+}
+
+.iconeGlu {
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #fccb094c;
+}
+
+.iconeLip {
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #fd50814c;
+}
+
+@media screen and (max-width: 1024px) {
+    .container {
+        margin-top: 75px;
+    }
+    .blocContainer {
+        padding: 20px;
+        margin-top: 30px;
+        margin-left: 80px;
+    }
+    .paraf {
+        font-size: 1em;
+        margin-bottom: 5px;
+    }
+    
+    .subtitle {
+        font-size: 0.8em;
+        color: #74798C;
+    }
+    .iconeKcal {
+        margin-top: 0;
+    }
+}

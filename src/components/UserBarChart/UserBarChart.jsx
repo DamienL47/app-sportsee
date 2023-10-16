@@ -8,6 +8,7 @@ import {
   Legend,
   CartesianGrid,
   Tooltip,
+  ResponsiveContainer,
 } from "recharts";
 import { useEffect, useState } from "react";
 import { USER_ACTIVITY } from "../../config";
@@ -53,19 +54,65 @@ export function UserBarChart({ user }) {
       </>
     );
   };
-
+  const customAxisX = ["1", "2", "3", "4", "5", "6", "7"];
   return (
     <>
       <div className={s.barchart}>
         <h3 className={s.subtitle}>Activité quotidienne</h3>
-        <BarChart width={900} height={250} data={activity} barGap={10}>
+        <ResponsiveContainer width="100%" height="80%">
+          <BarChart width={580} height={200} data={activity} barGap={10}>
+            <CartesianGrid strokeDasharray="1" vertical={false} />
+            <XAxis
+              dataKey={customAxisX.value}
+              stroke="#9B9EAC"
+              tickLine={false}
+              axisLine={false}
+              tickMargin={15}
+              tickFormatter={(index) => customAxisX[index]}
+            />
+            <YAxis
+              stroke="#9B9EAC"
+              orientation="right"
+              tickLine={false}
+              axisLine={false}
+              tickMargin={15}
+              style={{ fontSize: "12px" }}
+            />
+            <Legend
+              verticalAlign="top"
+              align="right"
+              content={customLegend}
+              wrapperStyle={{
+                position: "absolute",
+                top: "-40px",
+                right: "30px",
+              }}
+            />
+            <Tooltip content={<CustomTooltip />} />
+            <Bar
+              dataKey="kilogram"
+              fill="#282D30"
+              barSize={10}
+              radius={[10, 10, 0, 0]}
+            />
+            <Bar
+              dataKey="calories"
+              fill="#E60000"
+              barSize={10}
+              radius={[10, 10, 0, 0]}
+            />
+          </BarChart>
+        </ResponsiveContainer>
+
+        {/* <BarChart width={580} height={180} data={activity} barGap={10}>
           <CartesianGrid strokeDasharray="1" vertical={false} />
           <XAxis
-            dataKey="day"
+            dataKey={customAxisX.value}
             stroke="#9B9EAC"
             tickLine={false}
             axisLine={false}
             tickMargin={15}
+            tickFormatter={(index) => customAxisX[index]}
           />
           <YAxis
             stroke="#9B9EAC"
@@ -73,12 +120,17 @@ export function UserBarChart({ user }) {
             tickLine={false}
             axisLine={false}
             tickMargin={15}
+            style={{ fontSize: "12px" }}
           />
           <Legend
             verticalAlign="top"
             align="right"
             content={customLegend}
-            wrapperStyle={{ position: "absolute", top: "-40px", right: "30px" }}
+            wrapperStyle={{
+              position: "absolute",
+              top: "-40px",
+              right: "30px",
+            }}
           />
           <Tooltip content={<CustomTooltip />} />
           <Bar
@@ -93,7 +145,7 @@ export function UserBarChart({ user }) {
             barSize={10}
             radius={[10, 10, 0, 0]}
           />
-        </BarChart>
+        </BarChart> */}
       </div>
     </>
   );

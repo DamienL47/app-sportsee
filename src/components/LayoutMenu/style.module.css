@@ -25,3 +25,20 @@
     list-style-type: none;
     font-size: 24px;
 }
+
+@media screen and (max-width: 1024px) {
+    .container {
+        width: 100%;
+        height: 71px;
+    }
+    .logo > img {
+        width: 150px;
+    }
+    .nav {
+        width: 70%;
+    }
+    .item {
+        font-size: 20px;
+    }
+
+}

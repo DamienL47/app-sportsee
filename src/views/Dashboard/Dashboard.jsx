@@ -7,6 +7,7 @@ import { UserLineChart } from "../../components/UserLineChart/UserLineChart";
 import { UserBarChart } from "../../components/UserBarChart/UserBarChart";
 import { UserRadarChart } from "../../components/UserRadarChart/UserRadarChart";
 import { UserPieChart } from "../../components/UserPieChart/UserPieChart";
+import { UserEnergy } from "../../components/UserEnergy/UserEnergy";
 
 export function Dashboard({ user }) {
   const [userName, setUserName] = useState("");
@@ -27,30 +28,30 @@ export function Dashboard({ user }) {
   return (
     <>
       <LayoutMenu />
-      <VerticalLayout />
-      <section className={s.section}>
-        <h1 className={s.title}>
-          Bonjour <span className={s.name}>{userName}</span>
-        </h1>
-        <p className={s.text}>
-          Félicitation ! Vous avez explosé vos objectifs hier 👏
-        </p>
-        <div className={s.containerCharts}>
-          <div className={s.barChart}>
-            <UserBarChart user={user} />
-          </div>
-          <div className={s.treeCharts}>
-            <UserLineChart user={user} />
-            <div className={s.radarChart}>
-              <UserRadarChart user={user} />
+      <div className={s.dashboardContainer}>
+        <VerticalLayout />
+        <section className={s.section}>
+          <h1 className={s.title}>
+            Bonjour <span className={s.name}>{userName}</span>
+          </h1>
+          <p className={s.text}>
+            Félicitation ! Vous avez explosé vos objectifs hier 👏
+          </p>
+          <div className={s.containerCharts}>
+            <div className={s.barChart}>
+              <UserBarChart user={user} />
             </div>
-            <div className={s.circularChart}>
+            <div className={s.treeCharts}>
+              <UserLineChart user={user} />
+              <UserRadarChart user={user} />
               <UserPieChart user={user} />
             </div>
           </div>
+        </section>
+        <div className={s.energyCount}>
+          <UserEnergy user={user} />
         </div>
-        <div className={s.energyCount}></div>
-      </section>
+      </div>
     </>
   );
 }

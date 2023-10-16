@@ -42,17 +42,17 @@ export function UserRadarChart({ user }) {
   return (
     <>
       <div className={s.radarChart}>
-        <ResponsiveContainer width="100%" height="90%">
+        <ResponsiveContainer width="100%" height="100%">
           <RadarChart
-            cx="49%"
-            cy="55%"
-            outerRadius={90}
+            cx="50%"
+            cy="50%"
+            outerRadius={55}
             data={performance.data}
           >
             <PolarGrid radialLines={false} />
             <PolarAngleAxis
               dataKey="kind"
-              tick={{ fontSize: 13 }}
+              tick={{ fontSize: 8 }}
               tickFormatter={(value) => kindValue[0][value]}
               stroke="#fff"
               axisLine={false}

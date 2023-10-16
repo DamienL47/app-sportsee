@@ -7,7 +7,7 @@
     src: url("./assets/fonts/Roboto-Bold.ttf");
 }
 body {
-    margin: 0;
+    margin: auto;
     padding: 0;
     box-sizing: border-box;
 }

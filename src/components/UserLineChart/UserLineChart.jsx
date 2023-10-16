@@ -1,6 +1,6 @@
 import s from "./style.module.css";
 import { DataAPI } from "../../api/data.js";
-import { LineChart, Line, Tooltip, XAxis } from "recharts";
+import { LineChart, Line, Tooltip, XAxis, ResponsiveContainer } from "recharts";
 import { useEffect, useState } from "react";
 import { USER_AVERAGE } from "../../config";
 
@@ -58,41 +58,49 @@ export function UserLineChart({ user }) {
     <>
       <div className={s.linechart}>
         <h3 className={s.subtitle}>Durée moyenne des sessions</h3>
-        <LineChart
-          width={300}
-          height={160}
-          data={average}
-          style={{ marginTop: "50px" }}
-        >
-          <defs>
-            <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop
-                offset="0%"
-                style={{ stopColor: "white", stopOpacity: 0.2 }}
-              />
-              <stop
-                offset="100%"
-                style={{ stopColor: "white", stopOpacity: 1 }}
-              />
-            </linearGradient>
-          </defs>
-          <Line
-            type="basis"
-            dataKey="sessionLength"
-            stroke="url(#lineGradient)"
-            strokeWidth={3}
-            dot={false}
-          />
+        <ResponsiveContainer width="100%" height="50%">
+          <LineChart
+            width={200}
+            height={200}
+            data={average}
+            style={{ marginTop: "30px" }}
+          >
+            <defs>
+              <linearGradient
+                id="lineGradient"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="0%"
+              >
+                <stop
+                  offset="0%"
+                  style={{ stopColor: "white", stopOpacity: 0.2 }}
+                />
+                <stop
+                  offset="100%"
+                  style={{ stopColor: "white", stopOpacity: 1 }}
+                />
+              </linearGradient>
+            </defs>
+            <Line
+              type="monotone"
+              dataKey="sessionLength"
+              stroke="url(#lineGradient)"
+              strokeWidth={3}
+              dot={false}
+            />
 
-          <XAxis
-            dataKey="day"
-            axisLine={false}
-            tickLine={false}
-            padding={{ left: 10, right: 10 }}
-            tick={<CustomXAxisTick />}
-          />
-          <Tooltip content={<CustomTooltip />} />
-        </LineChart>
+            <XAxis
+              dataKey="day"
+              axisLine={false}
+              tickLine={false}
+              padding={{ left: 10, right: 10 }}
+              tick={<CustomXAxisTick />}
+            />
+            <Tooltip content={<CustomTooltip />} />
+          </LineChart>
+        </ResponsiveContainer>
       </div>
     </>
   );

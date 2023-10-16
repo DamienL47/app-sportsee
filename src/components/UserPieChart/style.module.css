@@ -1,7 +1,7 @@
 .containerPieChart {
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 258px;
+    height: 258px;
     border-radius: 20px;
     background-color: #fcfcfc;
 }
@@ -28,4 +28,21 @@
     font-family: 'Roboto-Bold';
     padding-bottom: 20px;
     
+}
+
+@media screen and (max-width: 1024px) {
+    .containerPieChart {
+        width: 190px;
+        height: 190px;
+    }
+    .subtitle {
+        font-size: 12px;
+    }
+    .customLabel {
+        width: 45px;
+        font-size: 12px;
+    }
+    .customScore {
+        font-size: 20px;
+    } 
 }
