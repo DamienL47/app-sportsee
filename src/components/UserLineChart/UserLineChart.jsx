@@ -1,5 +1,6 @@
-import s from "./style.module.css";
-import { DataAPI } from "../../api/data.js";
+// Importation des modules et composants nécessaires depuis les bibliothèques et fichiers locaux
+import s from "./style.module.css"; // Styles spécifiques au composant
+import { DataAPI } from "../../api/data.js"; // Module d'API pour récupérer les données
 import {
   LineChart,
   Line,
@@ -7,13 +8,19 @@ import {
   XAxis,
   ReferenceDot,
   ResponsiveContainer,
-} from "recharts";
-import { useEffect, useState } from "react";
-import { USER_AVERAGE } from "../../config";
+} from "recharts"; // Composants de la bibliothèque Recharts pour créer le graphique
+import { useEffect, useState } from "react"; // Hooks React pour gérer les effets et états
+import { USER_AVERAGE } from "../../config"; // Constantes de configuration
 
+// Composant principal pour le graphique en ligne
 export function UserLineChart({ user }) {
+  // État pour stocker la durée moyenne des sessions
   const [average, setAverage] = useState([]);
+
+  // Jours de la semaine pour l'axe X du graphique
   const day = ["L", "M", "M", "J", "V", "S", "D"];
+
+  // Effet secondaire pour récupérer les données de durée moyenne des sessions utilisateur
   useEffect(() => {
     async function getAverage() {
       try {
@@ -26,12 +33,14 @@ export function UserLineChart({ user }) {
     getAverage();
   }, [user]);
 
+  // Assignation des jours de la semaine aux données de durée moyenne
   if (average) {
     average.map((item, index) => {
       item.day = day[index];
     });
   }
 
+  // Composant personnalisé pour l'affichage du tooltip du graphique
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       return (
@@ -40,9 +49,10 @@ export function UserLineChart({ user }) {
         </div>
       );
     }
-
     return null;
   };
+
+  // Composant personnalisé pour l'affichage des étiquettes de l'axe X
   const CustomXAxisTick = ({ x, y, payload }) => {
     return (
       <g transform={`translate(${x},${y})`}>
@@ -61,7 +71,10 @@ export function UserLineChart({ user }) {
     );
   };
 
+  // État pour stocker les données du point survolé sur le graphique
   const [hoveredData, setHoveredData] = useState(null);
+
+  // Gestionnaire d'événement pour suivre le mouvement de la souris sur le graphique
   const handleMouseMove = (event) => {
     const x = event.nativeEvent.offsetX;
     const y = event.nativeEvent.offsetY;
@@ -70,10 +83,11 @@ export function UserLineChart({ user }) {
     setHoveredData({ x, y, overlayHeight: containerHeight - y });
   };
 
-  console.log(hoveredData);
+  // Rendu du composant
   return (
     <>
       <div className={s.linechart} onMouseDown={handleMouseMove}>
+        {/* Overlay pour mettre en surbrillance la partie du graphique survolée */}
         <div
           className={s.overlay}
           style={{
@@ -82,14 +96,18 @@ export function UserLineChart({ user }) {
             left: hoveredData ? `${hoveredData.x}px` : 0,
           }}
         />
+        {/* Titre du graphique */}
         <h3 className={s.subtitle}>Durée moyenne des sessions</h3>
+        {/* Conteneur réactif pour le graphique */}
         <ResponsiveContainer width="100%" height="50%">
+          {/* Composant principal du graphique en ligne avec ses composants internes */}
           <LineChart
             width={200}
             height={200}
             data={average}
             style={{ marginTop: "30px" }}
           >
+            {/* Définition du dégradé pour la ligne du graphique */}
             <defs>
               <linearGradient
                 id="lineGradient"
@@ -108,6 +126,7 @@ export function UserLineChart({ user }) {
                 />
               </linearGradient>
             </defs>
+            {/* Ligne du graphique avec ses propriétés et options */}
             <Line
               type="natural"
               dataKey="sessionLength"
@@ -116,7 +135,9 @@ export function UserLineChart({ user }) {
               dot={false}
               isAnimationActive={false}
             />
+            {/* Point de référence sur la ligne du graphique */}
             <ReferenceDot />
+            {/* Axe X du graphique avec les jours de la semaine comme étiquettes */}
             <XAxis
               dataKey="day"
               axisLine={false}
@@ -124,6 +145,7 @@ export function UserLineChart({ user }) {
               padding={{ left: 10, right: 10 }}
               tick={<CustomXAxisTick />}
             />
+            {/* Tooltip personnalisé pour afficher les informations au survol */}
             <Tooltip content={<CustomTooltip />} cursor={false} />
           </LineChart>
         </ResponsiveContainer>
