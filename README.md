@@ -1,4 +1,10 @@
-# Getting Started with Create React App
+# APP Sportsee
+
+To start the project please first install the API by following the readme: https://github.com/DamienL47/P12-front-end-dashboard
+
+Then run the npm start command from the App sportsee folder on port 3001, the API being launched on port 3000.
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
