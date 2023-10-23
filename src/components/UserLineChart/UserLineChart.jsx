@@ -86,7 +86,7 @@ export function UserLineChart({ user }) {
   // Rendu du composant
   return (
     <>
-      <div className={s.linechart} onMouseMove={handleMouseMove}>
+      <div className={s.linechart} onMouseDown={handleMouseMove}>
         {/* Overlay pour mettre en surbrillance la partie du graphique survolée */}
         <div
           className={s.overlay}
