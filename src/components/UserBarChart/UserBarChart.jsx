@@ -60,7 +60,7 @@ export function UserBarChart({ user }) {
       <div className={s.barchart}>
         <h3 className={s.subtitle}>Activité quotidienne</h3>
         <ResponsiveContainer width="100%" height="80%">
-          <BarChart width={580} height={200} data={activity} barGap={10}>
+          <BarChart data={activity} barGap={10}>
             <CartesianGrid strokeDasharray="1" vertical={false} />
             <XAxis
               dataKey={customAxisX.value}

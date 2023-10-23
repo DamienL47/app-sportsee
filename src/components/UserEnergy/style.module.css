@@ -1,11 +1,13 @@
 .container {
-    margin-top: 0;
+    margin-top: 330px;
+    display: flex;
+    flex-direction: column;
 }
 
 .blocContainer {
     display: flex;
     width: 180px;
-    margin-top: 75px;
+    margin-top: 95px;
     align-items: center;
     background-color: #fcfcfc;
     border-radius: 20px;
@@ -29,6 +31,7 @@
 }
 
 .iconeKcal {
+    width: 30px;
     margin-top: 20px;
     background-color: #ff000055;
     border-radius: 5px;
@@ -36,6 +39,7 @@
 }
 
 .iconeProt {
+    width: 30px;
     margin-top: 20px;
     border-radius: 5px;
     padding: 10px;
@@ -43,6 +47,7 @@
 }
 
 .iconeGlu {
+    width: 30px;
     margin-top: 20px;
     border-radius: 5px;
     padding: 10px;
@@ -50,6 +55,7 @@
 }
 
 .iconeLip {
+    width: 30px;
     margin-top: 20px;
     border-radius: 5px;
     padding: 10px;
@@ -58,11 +64,12 @@
 
 @media screen and (max-width: 1024px) {
     .container {
-        margin-top: 75px;
+        margin-top: 90px;
     }
+
     .blocContainer {
-        padding: 20px;
-        margin-top: 30px;
+        padding: 5px 5px 15px 15px;
+        margin-top: 40px;
         margin-left: 80px;
     }
     .paraf {
@@ -75,6 +82,18 @@
         color: #74798C;
     }
     .iconeKcal {
-        margin-top: 0;
+        width: 20px;
+    }
+    
+    .iconeProt {
+        width: 20px;
+    }
+    
+    .iconeGlu {
+        width: 20px;
+    }
+    
+    .iconeLip {
+        width: 20px;  
     }
 }

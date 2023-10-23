@@ -86,7 +86,7 @@ export function UserLineChart({ user }) {
   // Rendu du composant
   return (
     <>
-      <div className={s.linechart} onMouseDown={handleMouseMove}>
+      <div className={s.linechart} onMouseMove={handleMouseMove}>
         {/* Overlay pour mettre en surbrillance la partie du graphique survolée */}
         <div
           className={s.overlay}
@@ -101,12 +101,7 @@ export function UserLineChart({ user }) {
         {/* Conteneur réactif pour le graphique */}
         <ResponsiveContainer width="100%" height="50%">
           {/* Composant principal du graphique en ligne avec ses composants internes */}
-          <LineChart
-            width={200}
-            height={200}
-            data={average}
-            style={{ marginTop: "30px" }}
-          >
+          <LineChart data={average} style={{ marginTop: "30px" }}>
             {/* Définition du dégradé pour la ligne du graphique */}
             <defs>
               <linearGradient

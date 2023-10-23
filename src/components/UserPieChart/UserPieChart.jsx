@@ -41,7 +41,7 @@ export function UserPieChart({ user }) {
         <h3 className={s.subtitle}>Score</h3>
         {customLabel()}
         <ResponsiveContainer width="100%" height="100%">
-          <PieChart width={258} height={258}>
+          <PieChart width={358} height={358}>
             <Pie
               data={dataScore}
               cx="50%"

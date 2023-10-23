@@ -31,7 +31,7 @@ export function UserRadarChart({ user }) {
   const kindValue = [
     {
       1: "Cardio",
-      2: "Energy",
+      2: "Energie",
       3: "Endurance",
       4: "Force",
       5: "Vitesse",
@@ -46,13 +46,13 @@ export function UserRadarChart({ user }) {
           <RadarChart
             cx="50%"
             cy="50%"
-            outerRadius={55}
+            outerRadius="55%"
             data={performance.data}
           >
             <PolarGrid radialLines={false} />
             <PolarAngleAxis
               dataKey="kind"
-              tick={{ fontSize: 8 }}
+              tick={{ fontSize: "0.6em" }}
               tickFormatter={(value) => kindValue[0][value]}
               stroke="#fff"
               axisLine={false}
